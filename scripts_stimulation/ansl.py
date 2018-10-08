@@ -3,7 +3,7 @@
 Experiment for audiometry and control for audible frequency, given
 different volume.
 
-Jacky, Chrissi, Michael Ernst
+Michael Ernst, Christina Paula van Gemmern, Jacqueline Kittel
 """
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
