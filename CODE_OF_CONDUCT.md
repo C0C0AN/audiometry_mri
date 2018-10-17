@@ -1,8 +1,8 @@
 # Code of Conduct
 
-We value the participation of every member of our community and want to ensure an that every contributer has an enjoyable and fulfilling experience. Accordingly, everyone who participates in the BIDSonym project is expected to show respect and courtesy to other community members at all time.
+We value the participation of every member of our community and want to ensure an that every contributor has an enjoyable and fulfilling experience. Accordingly, everyone who participates in the ANSL project is expected to show respect and courtesy to other community members at all time.
 
-The lead maintainers of the BIDSonym [Peer Herholz](https://github.com/peerherholz), [Rita Ludwig](https://github.com/rxqx) are dedicated to a ***harassment-free experience for everyone***, regardless of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion. **We do not tolerate harassment by and/or of members of our community in any form**.
+The lead maintainers of ANSL, [Peer Herholz](https://github.com/peerherholz), [Michael Ernst](https://github.com/M-earnest) are dedicated to a ***harassment-free experience for everyone***, regardless of gender, gender identity and expression, sexual orientation, disability, physical appearance, body size, race, age or religion. **We do not tolerate harassment by and/or of members of our community in any form**.
 
 *We are particularly motivated to support new and/or anxious collaborators, people who are looking to learn and develop their skills, and anyone who has experienced discrimination in the past.*
 
@@ -46,21 +46,21 @@ Project maintainers have the right and responsibility to remove, edit, or reject
 
 Members of the community who violate these rules - no matter how much they have contributed to the BIDS Starter Kit, or how specialised their skill set - will be approached by Peer or Rita. If inappropriate behaviour persists after this discussion, the contributer will be asked to discontinue their participation in the BIDSonym project.
 
-**To report an issue you have with community interactions** please contact [Peer](https://github.com/peerherholz) or [Rita](https://github.com/rxqx). All communication will be treated as confidential.
+**To report an issue you have with community interactions** please contact [Peer](https://github.com/peerherholz) or [Michael](https://github.com/M-earnest). All communication will be treated as confidential.
 
 ## Attribution
 
 This Code of Conduct was built on top of the [Mozilla Science Lab's][mozilla-science-home] [Code of Conduct][mozilla-science-coc] which is in the public domain under a [CC0 license][cc0-link]. It also incorporates part of the [Contributor Covenant][contributor-covenant-home], version 1.4, available at [http://contributor-covenant.org/version/1/4][contributor-covenant-version] and used under a [CC-BY 4.0][ccby-link] license.
 
-The BIDSonym Code of Conduct was developed by [Kirstie Whitaker][kirstie-github], originally for the [Brain Networks in Python][bnip-repo] project is provided under a [CC-BY 4.0][ccby-link] license, which means that anyone can remix and reuse the content provided here, without seeking additional permission, so long as it is attributed back to the [BIDSonym][bidsonym-repo] project. Please remember to also attribute the [Contributor Covenant][contributor-covenant-home].
+The ANSL Code of Conduct was developed by [Peer Herholz][peer-github], originally for the [Brain Networks in Python][bnip-repo] project is provided under a [CC-BY 4.0][ccby-link] license, which means that anyone can remix and reuse the content provided here, without seeking additional permission, so long as it is attributed back to the [ANSL][ansl-repo] project. Please remember to also attribute the [Contributor Covenant][contributor-covenant-home].
 
 
 [contributor-covenant-home]: http://contributor-covenant.org
 [contributor-covenant-version]: http://contributor-covenant.org/version/1/4
 [ccby-link]: https://creativecommons.org/licenses/by/4.0
 [cc0-link]: https://creativecommons.org/publicdomain/zero/1.0
-[kirstie-github]: https://github.com/kirstiejane
+[peer-github]: https://github.com/peerherholz
 [bnip-repo]: https://github.com/WhitakerLab/BrainNetworksInPython
-[bidsonym-repo]: https://github.com/PeerHerholz/BIDSonym
+[ansl-repo]: https://github.com/C0C0AN/audiometry_mri
 [mozilla-science-home]: https://science.mozilla.org/
 [mozilla-science-coc]: https://github.com/mozillascience/code_of_conduct
