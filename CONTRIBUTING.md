@@ -2,9 +2,9 @@
 
 Welcome to the ANSL repository! We're excited you're here and want to contribute.  
 
-These guidelines are designed to make it as easy as possible to get involved. If you have any questions that aren't discussed below, please let us know by opening an [issue][https://github.com/C0C0AN/audiometry_mri]!
+These guidelines are designed to make it as easy as possible to get involved. If you have any questions that aren't discussed below, please let us know by opening an [issue](https://github.com/C0C0AN/audiometry_mri)!
 
-Before you start you'll need to set up a free [GitHub][https://github.com] account and sign in. Here are some [instructions][https://help.github.com/articles/signing-up-for-a-new-github-account/].
+Before you start you'll need to set up a free [GitHub](https://github.com) account and sign in. Here are some [instructions](https://help.github.com/articles/signing-up-for-a-new-github-account/).
 If you are not familiar with version control systems such as git,
  [introductions and tutorials](http://www.reproducibleimaging.org/module-reproducible-basics/02-vcs/)
  may be found on [ReproducibleImaging.org](https://www.reproducibleimaging.org).
@@ -54,19 +54,19 @@ This allows other members of the BIDSonym development team to confirm that you a
 
 [This blog][https://www.igvita.com/2011/12/19/dont-push-your-pull-requests/] is a nice explanation of why putting this work in up front is so useful to everyone involved.
 
-**2. [Fork][https://help.github.com/articles/fork-a-repo/] the [BIDSonym repository][https://github.com/PeerHerholz/BIDSonym] to your profile.**
+**2. [Fork](https://help.github.com/articles/fork-a-repo/ the [ANSL repository](https://github.com/C0C0AN/audiometry_mri) to your profile.**
 
-This is now your own unique copy of the BIDSonym repository.
+This is now your own unique copy of the ANSL repository.
 Changes here won't affect anyone else's work, so it's a safe space to explore edits to the code!
 
-You can clone your BIDSonym repository in order to create a local copy of the code on your machine.
-To install your version of BIDSonym, and the dependencies needed for development,
-in your Python environment, run `pip install -e ".[dev]"` from your local BIDSonym
+You can clone your ANSL repository in order to create a local copy of the code on your machine.
+To install your version of ANSL, and the dependencies needed for development,
+in your Python environment, run `pip install -e ".[dev]"` from your local ANSL
 directory.
 
-Make sure to keep your fork up to date with the original BIDSonym repository.
+Make sure to keep your fork up to date with the original ANSL repository.
 One way to do this is to [configure a new remote named "upstream"](https://help.github.com/articles/configuring-a-remote-for-a-fork/)
- and to [sync your fork with the upstream repository][https://help.github.com/articles/syncing-a-fork/].
+ and to [sync your fork with the upstream repository](https://help.github.com/articles/syncing-a-fork/).
 
 **3. Make the changes you've discussed.**
 
@@ -78,7 +78,7 @@ It's a good practice to create [a new branch](https://help.github.com/articles/a
 of the repository for a new set of changes.
 
 
-**4. Submit a [pull request][link_pullrequest].**
+**4. Submit a [pull request](link_pullrequest).**
 
 A new pull request for your changes should be created from your fork of the repository.
 
@@ -129,4 +129,4 @@ You're awesome. :wave::smiley:
 
 <br>
 
-*&mdash; Based on contributing guidelines from the [STEMMRoleModels][link_stemmrolemodels] project.*
+*&mdash; Based on contributing guidelines from the [STEMMRoleModels](link_stemmrolemodels) project.*
