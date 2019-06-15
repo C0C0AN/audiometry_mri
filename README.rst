@@ -73,4 +73,4 @@ If you intend to or already used ANSL, we would be very happy if you cite this g
 
 
 
-Please feel free to contact me wrt any question or idea via mail (herholz dot peer at gmail dot com), twitter (`@peeherholz <https://twitter.com/PeerHerholz?lang=eng>`_) or the brainhack slack team (@Peer).
+Please feel free to contact me wrt any question or idea via mail (herholz dot peer at gmail dot com), twitter (`@peeherholz <https://twitter.com/PeerHerholz?lang=eng>`_) or the brainhack slack/mattermost team (@peerherholz).
