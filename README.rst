@@ -23,7 +23,12 @@ Ain't no sound loud enough - audiometry-like measurements for the assessment of 
 
 Description
 ===========
-ANSL is a toolbox (and hopefully soon BIDS app) for conducting audiometry like measurements in MRI settings. In more detail, it includes adjustable [short experiments](https://github.com/C0C0AN/audiometry_mri/scripts_stimulation) targeting hearing thresholds by presenting a range of frequencies in ascending and descending loudness, the automated analysis of [recorded responses](https://github.com/C0C0AN/audiometry_mri/scripts_analyses), [tutorials regarding stimuli](https://github.com/C0C0AN/audiometry_mri/scripts_stimulation) and plotting functionalities, e.g. plotting hearing thresholds on top of scanner and stimuli frequencies to visualize possible interaction effects (graphic above), plotting mean hearing thresholds across different scanner settings (graphic below) and plotting loudness increase and decrease trials in different scanner settings (graphic further down).
+ANSL is a toolbox (and hopefully soon BIDS app) for conducting audiometry like measurements in MRI settings. In more detail, it includes adjustable `short experiments <https://github.com/C0C0AN/audiometry_mri/scripts_stimulation>`_ targeting hearing thresholds by presenting a range of frequencies in ascending and descending loudness, the automated analysis of `recorded responses <https://github.com/C0C0AN/audiometry_mri/scripts_analyses>`_, `tutorials regarding stimuli <https://github.com/C0C0AN/audiometry_mri/scripts_stimulation>`_ and plotting functionalities, e.g. plotting hearing thresholds on top of scanner and stimuli frequencies to visualize possible interaction effects (graphic above), plotting mean hearing thresholds across different scanner settings (graphic below) and plotting loudness increase and decrease trials in different scanner settings (graphic further down).
+
+.. image:: data/ansl_example_all_line.png
+    :alt: examples_all
+    :scale: 50 %
+
 
 Overview of functionality
 =========================
@@ -40,8 +45,7 @@ ______________
 Utilities
 ________
 
-.. image:: data/ansl_example_all_line.png
-    :alt: examples_all
+
 
 .. image:: data/ansl_example_all_sub.png
     :alt: examples_all_sub
