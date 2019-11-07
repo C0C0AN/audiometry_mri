@@ -52,6 +52,9 @@ ________
 
 Documentation
 =============
+.. image:: ohbm_2019/ANSL_OHBM_2019.png
+    :alt: ohbm_2019_poster
+    
 A documentation is currently in the works and will be available soon. Sorry for any inconvenience this might cause.
 
 How to report errors
