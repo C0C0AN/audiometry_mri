@@ -52,9 +52,7 @@ ________
 
 Documentation
 =============
-.. image:: ohbm_2019/ANSL_OHBM_2019.png
-    :alt: ohbm_2019_poster
-    
+
 A documentation is currently in the works and will be available soon. Sorry for any inconvenience this might cause.
 
 How to report errors
@@ -77,3 +75,12 @@ If you intend to or already used ANSL, we would be very happy if you cite this g
 
 
 Please feel free to contact me wrt any question or idea via mail (herholz dot peer at gmail dot com), twitter (`@peeherholz <https://twitter.com/PeerHerholz?lang=eng>`_) or the brainhack slack/mattermost team (@peerherholz).
+
+
+Support
+=======
+This work was supported in part by funding provided by `Brain Canada <https://braincanada.ca/>`_, in partnership with `Health Canada <https://www.canada.ca/en/health-canada.html>`_, for the `Canadian Open Neuroscience Platform initiative <https://conp.ca/>`_.
+
+.. image:: https://conp.ca/wp-content/uploads/elementor/thumbs/logo-2-o5e91uhlc138896v1b03o2dg8nwvxyv3pssdrkjv5a.png
+    :alt: logo_conp
+    :target: https://conp.ca/
