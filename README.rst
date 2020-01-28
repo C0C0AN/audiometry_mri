@@ -1,21 +1,21 @@
 Ain't no sound loud enough - audiometry-like measurements for the assessment of acoustic MRI noise
 ==================================================================================================
 
-.. image:: https://img.shields.io/github/issues-pr/CoCoAN/audiometry_mri.svg
+.. image:: https://img.shields.io/github/issues-pr/C0C0AN/audiometry_mri.svg
     :alt: PRs
-    :target: https://github.com/CoCoAN/audiometry_mri/pulls/
+    :target: https://github.com/C0C0AN/audiometry_mri/pulls/
 
-.. image:: https://img.shields.io/github/contributors/CoCoAN/audiometry_mri.svg
+.. image:: https://img.shields.io/github/contributors/C0C0AN/audiometry_mri.svg
     :alt: Contributors
-    :target: https://GitHub.com/CoCoAN/audiometry_mri/graphs/contributors/
+    :target: https://GitHub.com/C0C0AN/audiometry_mri/graphs/contributors/
 
-.. image:: https://github-basic-badges.herokuapp.com/commits/CoCoAN/audiometry_mri.svg
+.. image:: https://github-basic-badges.herokuapp.com/commits/C0C0AN/audiometry_mri.svg
     :alt: Commits
-    :target: https://github.com/CoCoAN/audiometry_mri/commits/master
+    :target: https://github.com/C0C0AN/audiometry_mri/commits/master
 
-.. image:: http://hits.dwyl.io/CoCoAN/audiometry_mri.svg
+.. image:: http://hits.dwyl.io/C0C0AN/audiometry_mri.svg
     :alt: Hits
-    :target: http://hits.dwyl.io/CoCoAN/audiometry_mri
+    :target: http://hits.dwyl.io/C0C0AN/audiometry_mri
 
 .. image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :alt: License
@@ -46,9 +46,9 @@ Utilities
 ________
 
 
-
-.. image:: data/ansl_example_all_sub.png
-    :alt: examples_all_sub
+.. image:: data/ansl_example_all.png
+    :alt: examples_all
+    :scale: 50 %
 
 Documentation
 =============
