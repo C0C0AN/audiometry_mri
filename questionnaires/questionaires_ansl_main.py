@@ -22,7 +22,7 @@ import screening_ansl as screening
 # Ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemencoding())
 os.chdir(_thisDir)
-expInfo = {'participant':'', 'directory':'/home/michael/ANSL/questionnaires/data'}
+expInfo = {'participant':'', 'directory':''}
 dlg = gui.DlgFromDict(dictionary=expInfo, title='questionaire')
 if dlg.OK == False:
     core.quit()  # user pressed cancel
@@ -35,7 +35,7 @@ print(save_path)
 def update(field1, field2):
     # creates starting gui
     myDlg = gui.Dlg(title=u'questionaires')
-    myDlg.addText(u'status: o = noch ausstehend  x = erledigt\n')
+    myDlg.addText(u'status: o = not completed  x = completed\n')
     # prompts static text field showing the status of each questionaire
     myDlg.addText(field1 + ' demographisch')
     myDlg.addText(field2 + ' feedback')
@@ -44,16 +44,16 @@ def update(field1, field2):
     list_ = []
     # check status of each questionaire and add still open questionaires to drop down menu
     if field1 == 'o':
-        list_.append('demographisch')
+        list_.append('demographics')
     if field2 == 'o':
         list_.append('feedback')
 
 
     # prompt message when all questionaires are done, else print basic prompt and create drop down menu
     if len(list_) == 0 :
-        myDlg.addText(u'\n Danke, sie sind nun fertig.')
+        myDlg.addText(u'\n Thank you very much, you have finished this questionnaire.')
     else:
-        myDlg.addText(u'\n   Waehlen Sie den gewuenschten Fragebogen aus:')
+        myDlg.addText(u'\n   Please choose the questionnaire you want to conduct:')
         myDlg.addField(u'',choices=list_)
     myDlg.show()
     return myDlg
@@ -70,7 +70,7 @@ def questionaires_func():
     while not field1 == 'x' or not field2 == 'x':
 
         for i in myDlg.data:
-            if 'demographisch' in myDlg.data:
+            if 'demographics' in myDlg.data:
                 screening.main_func(expInfo, save_path)
                 field1 = 'x'
                 myDlg = update(field1, field2)
