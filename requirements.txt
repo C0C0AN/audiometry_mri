@@ -2,5 +2,7 @@
 
 numpy
 scipy
-seaborn
+scikit-learn
 pandas
+seaborn
+nipype
