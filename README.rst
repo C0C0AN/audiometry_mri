@@ -1,21 +1,21 @@
 Ain't no sound loud enough - audiometry-like measurements for the assessment of acoustic MRI noise
 ==================================================================================================
 
-.. image:: https://img.shields.io/github/issues-pr/CoCoAN/audiometry_mri.svg
+.. image:: https://img.shields.io/github/issues-pr/C0C0AN/audiometry_mri.svg
     :alt: PRs
-    :target: https://github.com/CoCoAN/audiometry_mri/pulls/
+    :target: https://github.com/C0C0AN/audiometry_mri/pulls/
 
-.. image:: https://img.shields.io/github/contributors/CoCoAN/audiometry_mri.svg
+.. image:: https://img.shields.io/github/contributors/C0C0AN/audiometry_mri.svg
     :alt: Contributors
-    :target: https://GitHub.com/CoCoAN/audiometry_mri/graphs/contributors/
+    :target: https://GitHub.com/C0C0AN/audiometry_mri/graphs/contributors/
 
-.. image:: https://github-basic-badges.herokuapp.com/commits/CoCoAN/audiometry_mri.svg
+.. image:: https://github-basic-badges.herokuapp.com/commits/C0C0AN/audiometry_mri.svg
     :alt: Commits
-    :target: https://github.com/CoCoAN/audiometry_mri/commits/master
+    :target: https://github.com/C0C0AN/audiometry_mri/commits/master
 
-.. image:: http://hits.dwyl.io/CoCoAN/audiometry_mri.svg
+.. image:: http://hits.dwyl.io/C0C0AN/audiometry_mri.svg
     :alt: Hits
-    :target: http://hits.dwyl.io/CoCoAN/audiometry_mri
+    :target: http://hits.dwyl.io/C0C0AN/audiometry_mri
 
 .. image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :alt: License
@@ -46,12 +46,13 @@ Utilities
 ________
 
 
-
-.. image:: data/ansl_example_all_sub.png
-    :alt: examples_all_sub
+.. image:: data/ansl_example_all.png
+    :alt: examples_all
+    :scale: 50 %
 
 Documentation
 =============
+
 A documentation is currently in the works and will be available soon. Sorry for any inconvenience this might cause.
 
 How to report errors
@@ -74,3 +75,12 @@ If you intend to or already used ANSL, we would be very happy if you cite this g
 
 
 Please feel free to contact me wrt any question or idea via mail (herholz dot peer at gmail dot com), twitter (`@peeherholz <https://twitter.com/PeerHerholz?lang=eng>`_) or the brainhack slack/mattermost team (@peerherholz).
+
+
+Support
+=======
+This work is supported in part by funding provided by `Brain Canada <https://braincanada.ca/>`_, in partnership with `Health Canada <https://www.canada.ca/en/health-canada.html>`_, for the `Canadian Open Neuroscience Platform initiative <https://conp.ca/>`_.
+
+.. image:: https://conp.ca/wp-content/uploads/elementor/thumbs/logo-2-o5e91uhlc138896v1b03o2dg8nwvxyv3pssdrkjv5a.png
+    :alt: logo_conp
+    :target: https://conp.ca/
