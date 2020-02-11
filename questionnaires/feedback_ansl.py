@@ -24,20 +24,20 @@ def update(list_1,firsttrial,check):
         print(str(firsttrial)+'trial')
         myDlg1 = gui.Dlg(title="Nachbefragung")
         # quest 1
-        myDlg1.addField('Welche Toene waren gut hoerbar?:',choices= ['tiefe','hohe','keine'],initial=list_1[0])
+        myDlg1.addField('Which tones were audible?:',choices= ['low','high','both','none'],initial=list_1[0])
         # quest 2
-        myDlg1.addField('Welche Toene waren schlecht hoerbar?:', choices=['tiefe','hohe','keine'],initial=list_1[1])
+        myDlg1.addField('Which tones were not audible?:', choices=['low','high','both','none'],initial=list_1[1])
         # quest 3 and 4
-        myDlg1.addField('Warst du waehrend der Audiometriemessung abgelenkt / konntest dich nur schlecht konzentrieren?'
+        myDlg1.addField('Do you were distracted during the audiometry / could you not concentrate?'
                         ,choices= ['J','N'],initial=list_1[2])
         if list_1[2] == '' and firsttrial==0:
-            myDlg1.addField('Wenn Ja: Warum?:',initial=list_1[3])
-        elif list_1[2] == 'J'  and list_1[3] == '' and firsttrial==1:
-            myDlg1.addField('Wenn Ja: Warum?:',initial=list_1[3], color='red')
+            myDlg1.addField('If yes: why?:',initial=list_1[3])
+        elif list_1[2] == 'y'  and list_1[3] == '' and firsttrial==1:
+            myDlg1.addField('If yes: why?:',initial=list_1[3], color='red')
         elif list_1[2] == 'N'  and firsttrial==1:
-            myDlg1.addField('Wenn Ja: Warum?:',initial=list_1[3])
-        elif list_1[2] == 'J'  and not list_1[3] == ''and firsttrial==1:
-            myDlg1.addField('Wenn Ja: Warum?:',initial=list_1[3])
+            myDlg1.addField('If yes: why?:',initial=list_1[3])
+        elif list_1[2] == 'Y'  and not list_1[3] == ''and firsttrial==1:
+            myDlg1.addField('If yes: why?:',initial=list_1[3])
 
         # quest 5 and 6
         myDlg1.addField('Konntest du deine Konzentration gut auf das Hoeren der Toene richten?',choices= ['J','N'],initial=list_1[4])
