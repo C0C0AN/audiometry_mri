@@ -20,6 +20,10 @@ Ain't no sound loud enough - audiometry-like measurements for the assessment of 
 .. image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :alt: License
     :target: https://opensource.org/licenses/BSD-3-Clause
+    
+.. image:: https://img.shields.io/badge/Supported%20by-%20CONP%2FPCNO-red
+    :alt: support_conp
+    :target: https://conp.ca/
 
 Description
 ===========
