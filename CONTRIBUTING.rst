@@ -5,9 +5,7 @@ Welcome to the ANSL repository! We're excited you're here and want to contribute
 These guidelines are designed to make it as easy as possible to get involved. If you have any questions that aren't discussed below, please let us know by opening an `issue <https://github.com/PeerHerholz/ANSL>`_!
 
 Before you start you'll need to set up a free `GitHub <https://github.com>`_ account and sign in. Here are some `instructions <https://help.github.com/articles/signing-up-for-a-new-github-account/>`_.
-If you are not familiar with version control systems such as git,
- `introductions and tutorials <http://www.reproducibleimaging.org/module-reproducible-basics/02-vcs/>`_
- may be found on `ReproducibleImaging.org <https://www.reproducibleimaging.org>`_.
+If you are not familiar with version control systems such as git, `introductions and tutorials <http://www.reproducibleimaging.org/module-reproducible-basics/02-vcs/>`_ may be found on `ReproducibleImaging.org <https://www.reproducibleimaging.org>`_.
 
 Already know what you're looking for in this guide? Jump to the following sections:
 
@@ -109,29 +107,30 @@ The development team may prefer a different path than you've outlined, so it's b
 
 One your PR is ready a member of the development team will review your changes to confirm that they can be merged into the main codebase.
 
-## Notes for New Code
+Notes for New Code
+------------------
 
-#### Catching exceptions
+**Catching exceptions**
+
 In general, do not catch exceptions without good reason.
 For non-fatal exceptions, log the exception as a warning and add more information about what may have caused the error.
 
 If you do need to catch an exception, raise a new exception using ``raise_from(NewException("message"), oldException)`` from ``future``.
 Do not log this, as it creates redundant/confusing logs.
 
-#### Testing
+**Testing**
+
 New code should be tested, whenever feasible.
 Bug fixes should include an example that exposes the issue.
 Any new features should have tests that show at least a minimal example.
 If you're not sure what this means for your code, please ask in your pull request.
 
-## Recognizing contributions
-
+**Recognizing contributions**
 We welcome and recognize all contributions from documentation to testing to code development.
 
 The development team member who accepts/merges your pull request will update the CHANGES file to reference your contribution.
 
-## Thank you!
-
+**Thank you!**
 You're awesome.
 
 Based on contributing guidelines from the `STEMMRoleModels <http://stemmrolemodels.com/>`_ project.*
