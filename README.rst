@@ -9,7 +9,7 @@ Ain't no sound loud enough - audiometry-like measurements for the assessment of 
     :alt: Contributors
     :target: https://GitHub.com/C0C0AN/audiometry_mri/graphs/contributors/
 
-.. image:: https://github-basic-badges.herokuapp.com/commits/C0C0AN/audiometry_mri.svg
+.. image:: https://img.shields.io/github/commit-activity/m/C0C0AN/audiometry_mri?style=plastic
     :alt: Commits
     :target: https://github.com/C0C0AN/audiometry_mri/commits/master
 
