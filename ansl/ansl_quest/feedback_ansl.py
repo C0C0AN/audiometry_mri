@@ -7,7 +7,8 @@ feedback questionnaire for ansl pilot
 from psychopy import locale_setup, sound, gui, visual, core, data, event, logging
 import os  # handy system and path functions
 import sys
-reload(sys)
+import imp
+imp.reload(sys)
 sys.setdefaultencoding('utf8')
 
 import pandas as pd
@@ -21,8 +22,8 @@ def update(list_1,firsttrial,check):
 
     #gUI_1
     #added and list_1[] == '' in red condition --> resolved
-        print(str(firsttrial)+'trial')
-        myDlg1 = gui.Dlg(title="Nachbefragung")
+        print((str(firsttrial)+'trial'))
+        myDlg1 = gui.Dlg(title="Feedback")
         # quest 1
         myDlg1.addField('Which tones were audible?:',choices= ['low','high','both','none'],initial=list_1[0])
         # quest 2
@@ -40,31 +41,31 @@ def update(list_1,firsttrial,check):
             myDlg1.addField('If yes: why?:',initial=list_1[3])
 
         # quest 5 and 6
-        myDlg1.addField('Konntest du deine Konzentration gut auf das Hoeren der Toene richten?',choices= ['J','N'],initial=list_1[4])
+        myDlg1.addField('Could focus your attention towards hearing the sounds?',choices= ['Y','N'],initial=list_1[4])
         if list_1[4] == '' and firsttrial==0:
-            myDlg1.addField('Wenn Nein: Warum?:',initial=list_1[5])
+            myDlg1.addField('If not: Why?:',initial=list_1[5])
         elif list_1[4] == 'N'  and list_1[5] == '' and firsttrial==1:
-            myDlg1.addField('Wenn Nein: Warum?:',initial=list_1[5], color='red')
-        elif list_1[4] == 'J'  and firsttrial==1:
-            myDlg1.addField('Wenn Nein: Warum?:',initial=list_1[5])
+            myDlg1.addField('If not: why?:',initial=list_1[5], color='red')
+        elif list_1[4] == 'Y'  and firsttrial==1:
+            myDlg1.addField('If not: Why?:',initial=list_1[5])
         elif list_1[4] == 'N'  and not list_1[5] == '' and firsttrial==1:
-            myDlg1.addField('Wenn Nein: Warum?:',initial=list_1[5])
+            myDlg1.addField('If not: Why?:',initial=list_1[5])
         # quest 6 and 7
-        myDlg1.addField('Hattest du bestimmte Strategien, um die Toene besser wahrzunehmen?',choices= ['J','N'],initial=list_1[6])
+        myDlg1.addField('Did you use certain strategies to perceive the tones better?',choices= ['Y','N'],initial=list_1[6])
         if list_1[6] == '' or firsttrial==0:
-            myDlg1.addField('Wenn Ja: Welche?',initial=list_1[7])
-        elif list_1[6] == 'J' and list_1[7] == ''  and firsttrial==1:
-            myDlg1.addField('Wenn Ja: Welche?',initial=list_1[7], color='red')
+            myDlg1.addField('If yes: Which?',initial=list_1[7])
+        elif list_1[6] == 'Y' and list_1[7] == ''  and firsttrial==1:
+            myDlg1.addField('If yes: Which?',initial=list_1[7], color='red')
         elif list_1[6] == 'N'  and firsttrial==1:
-            myDlg1.addField('Wenn Ja: Welche?',initial=list_1[7])
+            myDlg1.addField('If yes: Which?',initial=list_1[7])
         elif list_1[6] == 'J' and not list_1[7] == ''  and firsttrial==1:
-            myDlg1.addField('Wenn Ja: Welche?',initial=list_1[7])
+            myDlg1.addField('If yes: Which?',initial=list_1[7])
 
         # quest 8
         if list_1[8] == '' or firsttrial==1:
-            myDlg1.addField('Zusaetzlichen Anmerkungen zum Experiment?',initial=list_1[8])
+            myDlg1.addField('Do you have any additional comments/feedback concerning the experiment?',initial=list_1[8])
         elif not list_1[8] == '' and firsttrial == 1:
-            myDlg1.addField('Zusaetzlichen Anmerkungen zum Experiment?',initial=list_1[8])
+            myDlg1.addField('Additional comments/feedback concerning the experiment?',initial=list_1[8])
 
         myDlg1.show()
         myDlg1 = myDlg1.data
@@ -76,15 +77,15 @@ def savecsv(list_1,filename):
   # add column + data
 
     print('list')
-    data = {'gut_hoerbar': list_1[0],
-            'schlecht_hoerbar': list_1[1],
-            'aufmerksamkeit': list_1[2],
-            'problematik_aufmerksamkeit': list_1[3],
-            'konzentartion_toene': list_1[4],
-            'problematik_konzentration': list_1[5],
-            'strategienutzung': list_1[6],
-            'genutzte Strategie': list_1[7],
-            'zusaetzliche_anmerkungen': list_1[8]}
+    data = {'hearing_good': list_1[0],
+            'hearing_bad': list_1[1],
+            'attention': list_1[2],
+            'attention_problems': list_1[3],
+            'attention_tones': list_1[4],
+            'concentration_problems': list_1[5],
+            'strategy': list_1[6],
+            'strategy_used': list_1[7],
+            'comments_feedback': list_1[8]}
 
     df = pd.Series(data).to_frame()
     df.to_csv(filename+'.csv',header=False)
@@ -93,19 +94,17 @@ def savecsv(list_1,filename):
 def check_values(list_1, check):
     print(list_1)
     if check == 0:
-        if list_1[2] == 'J' and list_1[3] == '':
+        if list_1[2] == 'Y' and list_1[3] == '':
             print('01 is the problem')
             return 0
         elif list_1[4] == 'N' and list_1[5] == '':
             print('q2')
             return 0
-        elif list_1[6] == 'J' and list_1[7] == '':
+        elif list_1[6] == 'Y' and list_1[7] == '':
             print('q3')
             return 0
         else:
             return 4
-
-
 
 
 def main_func(expInfo, save_path):
@@ -114,10 +113,10 @@ def main_func(expInfo, save_path):
     _thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemencoding())
     os.chdir(_thisDir)
 
-    expName = u'feedback_ansl'
+    expName = 'feedback_ansl'
 
     # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
-    filename =save_path + os.sep + u'%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
+    filename =save_path + os.sep + '%s_%s_%s' % (expInfo['participant'], expName, expInfo['date'])
 
     # An ExperimentHandler isn't essential but helps with data saving
     thisExp = data.ExperimentHandler(name=expName, version='', runtimeInfo=None,
@@ -141,10 +140,10 @@ def main_func(expInfo, save_path):
     while check is not 4:
         temp_Dlg = update(list_1,firsttrial,check)
         temp_check = check
-        print(str(temp_check)+'check')
+        print((str(temp_check)+'check'))
         print(temp_Dlg)
         check = check_values(temp_Dlg[1], check)
-        print(str(check)+'check')
+        print((str(check)+'check'))
         # compare check values before and after check function and assign either 1 or 0 tp trial number
         if temp_check == check:
             firsttrial=1
