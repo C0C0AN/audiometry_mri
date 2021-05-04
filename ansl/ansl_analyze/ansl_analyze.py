@@ -8,7 +8,7 @@ import os
 import glob
 import sklearn
 from sklearn.preprocessing import MinMaxScaler
-from __future__ import division #so 1/2 = 0.5, not 1/2=0
+ #so 1/2 = 0.5, not 1/2=0
 
 import pandas as pd
 

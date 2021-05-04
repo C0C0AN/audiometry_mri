@@ -1,7 +1,7 @@
 ''' created by Michael Ernst (https://github.com/M-earnest)
 
 main gui - allowing access to questionnaires'''
-from __future__ import absolute_import, division
+
 from psychopy import locale_setup, sound, gui, visual, core, data, event, logging
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
@@ -12,7 +12,8 @@ from numpy.random import random, randint, normal, shuffle
 import os  # handy system and path functionspart of the Dlg object has been deleted, attribute access no longer allowed.
 
 import sys
-reload(sys)
+import imp
+imp.reload(sys)
 sys.setdefaultencoding('utf8')
 
 import pandas as pd
@@ -34,8 +35,8 @@ print(save_path)
 # defines layout of hui gui and updates status of questionnaires after each run
 def update(field1, field2):
     # creates starting gui
-    myDlg = gui.Dlg(title=u'questionaires')
-    myDlg.addText(u'status: o = not completed  x = completed\n')
+    myDlg = gui.Dlg(title='questionaires')
+    myDlg.addText('status: o = not completed  x = completed\n')
     # prompts static text field showing the status of each questionaire
     myDlg.addText(field1 + ' demographisch')
     myDlg.addText(field2 + ' feedback')
@@ -51,10 +52,10 @@ def update(field1, field2):
 
     # prompt message when all questionaires are done, else print basic prompt and create drop down menu
     if len(list_) == 0 :
-        myDlg.addText(u'\n Thank you very much, you have finished this questionnaire.')
+        myDlg.addText('\n Thank you very much, you have finished this questionnaire.')
     else:
-        myDlg.addText(u'\n   Please choose the questionnaire you want to conduct:')
-        myDlg.addField(u'',choices=list_)
+        myDlg.addText('\n   Please choose the questionnaire you want to conduct:')
+        myDlg.addField('',choices=list_)
     myDlg.show()
     return myDlg
 

@@ -3,15 +3,16 @@
 Experiment for audiometry and control for audible frequency, given
 different volumes.
 
-Michael Ernst, Christina Paula van Gemmern, Jacqueline Kittel
+Michael Ernst, Christina Paula van Gemmern, Jacqueline Kittel, Peer Herholz
 """
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, division
+
 import os
 import errno  # handy system and path functions
 import sys  # to get file system encoding
 import time
+import importlib
 import pandas as pd
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED)
@@ -19,11 +20,13 @@ from psychopy import (locale_setup, sound, gui, visual,
                       core, data, event, logging)
 import json
 
-import analyse_ansl
+#import analyse_ansl
 
+from psychopy import prefs
+prefs.hardware['audioLib'] = ['PTB']
 
-reload(sys)
-sys.setdefaultencoding('utf8')
+import pathlib
+path_ansl = str(pathlib.Path(__file__).parent.absolute())
 
 ###############################################################################
 # Func to present the stimuli and collect participant responses
@@ -48,7 +51,6 @@ def stimuli_presentation(subject, hz_list, acquisition_scheme, order_volume,
     """
 
 # setup your screen specifications
-    #hz_list = pd.read_csv('/home/michael/atom/stimuli.csv')
     run_list = hz_list.columns
 
     if single_run == True:
@@ -68,7 +70,7 @@ def stimuli_presentation(subject, hz_list, acquisition_scheme, order_volume,
             order = list(range(0,9))
 
         elif order_volume == 'decreasing':
-            order = list(reversed(range(0,9)))
+            order = list(reversed(list(range(0,9))))
 
         #  get instruction for increasing or decreasing volume condition
         if order_volume == 'increasing':
@@ -248,14 +250,12 @@ def stimuli_presentation(subject, hz_list, acquisition_scheme, order_volume,
                 # get info on acquisition_scheme
                 if 'baseline' in acquisition_scheme:
                     acquisition_scheme_list.append('baseline')
-                elif 'epi_fast(TR1s)' in acquisition_scheme:
-                    acquisition_scheme_list.append('epi_fast(TR1s)')
-                elif 'epi_standard(TR2s)' in acquisition_scheme:
-                    acquisition_scheme_list.append('epi_standard(TR2s)')
-                elif 'mprage(T1w)' in acquisition_scheme:
-                    acquisition_scheme_list.append('mprage(T1w)')
+                elif 'functional' in acquisition_scheme:
+                    acquisition_scheme_list.append('functional')
+                elif 'structural' in acquisition_scheme:
+                    acquisition_scheme_list.append('structural')
                 else:
-                    acquisition_scheme_list.append('mprage(T1w)')
+                    acquisition_scheme_list.append('structural')
 
 
                 # get info on volume order
@@ -430,7 +430,7 @@ def stimuli_presentation(subject, hz_list, acquisition_scheme, order_volume,
                 order = list(range(0, 9))
 
             elif order_volume == 'decreasing':
-                order = list(reversed(range(0, 9)))
+                order = list(reversed(list(range(0, 9))))
 
             #  append order of volume and frequency presentation to json-file
             content.setdefault('volume_progression', []).append(order_volume)
@@ -585,14 +585,12 @@ def stimuli_presentation(subject, hz_list, acquisition_scheme, order_volume,
                     # get info on acquisition_scheme
                     if 'baseline' in acquisition_scheme:
                         acquisition_scheme_list.append('baseline')
-                    elif 'epi_fast(TR1s)' in acquisition_scheme:
-                        acquisition_scheme_list.append('epi_fast(TR1s)')
-                    elif 'epi_standard(TR2s)' in acquisition_scheme:
-                        acquisition_scheme_list.append('epi_standard(TR2s)')
-                    elif 'mprage(T1w)' in acquisition_scheme:
-                        acquisition_scheme_list.append('mprage(T1w)')
+                    elif 'functional' in acquisition_scheme:
+                        acquisition_scheme_list.append('functional')
+                    elif 'structural' in acquisition_scheme:
+                        acquisition_scheme_list.append('structural')
                     else:
-                        acquisition_scheme_list.append('mprage(T1w)')
+                        acquisition_scheme_list.append('structural')
 
                     # extract discovered volume
                     if 'not_discovered' in item:
@@ -690,7 +688,7 @@ def stimuli_presentation(subject, hz_list, acquisition_scheme, order_volume,
 # ----------------------------------------------------------------------------
 
 
-def gui_func1(field1, field2, field3, field4):
+def gui_func1(field1, field2, field3):
     """Define layout and create gui to specify
     acquisition_scheme.
     """
@@ -699,29 +697,27 @@ def gui_func1(field1, field2, field3, field4):
 
     # check status of each stting and add unused settings to drop down menu
     if field1 == 'o':
-        list_.append('mprage(T1w)')
-    if field2 == 'o':
-        list_.append('epi_standard(TR2s)')
-    if field3 == 'o':
-        list_.append('epi_fast(TR1s)')
-    if field4 == 'o':
         list_.append('baseline')
+    if field2 == 'o':
+        list_.append('functional')
+    if field3 == 'o':
+        list_.append('structural')
 
 
     myDlg = gui.Dlg(title=expName)
 
     # prompts static text field showing the status of each run
     myDlg.addText('\t')
-    myDlg.addText(field1 + '\tmprage(T1w)')
-    myDlg.addText(field2 + '\tepi_standard(TR2s)')
-    myDlg.addText(field3 + '\tepi_fast(TR1s)')
-    myDlg.addText(field4 + '\tbaseline')
+    myDlg.addText(field1 + '\tbaseline')
+    myDlg.addText(field2 + '\tfunctional')
+    myDlg.addText(field3 + '\tstructural')
+ 
 
     #if len(list_) == 0:
     #    myDlg.addText(u"\n Thanks, you're done.")
     #else:
-    myDlg.addText(u'\n   Choose acquisition_scheme:')
-    myDlg.addField(u'', choices=list_)
+    myDlg.addText('\n   Choose acquisition_scheme:')
+    myDlg.addField('', choices=list_)
 
     myDlg.show()  # output gui to screen
     if myDlg.OK == False:
@@ -738,8 +734,8 @@ def gui_func2():
     """
 
     myDlg2 = gui.Dlg(title=expName)
-    myDlg2.addText(u'\n   Run stimuli in all orders of frequency presentation and volume progression?:')
-    myDlg2.addField(u'', choices=['yes', 'no'])
+    myDlg2.addText('\n   What type of audiometry would you like to run?')
+    myDlg2.addField('', choices=['classic audiometry', 'ANSL adapted audiometry'])
 
 
     myDlg2.show()
@@ -752,28 +748,47 @@ def gui_func2():
     myDlg2 = myDlg2.data
     return myDlg2
 
-
 def gui_func3():
+    """Define layout and create gui to specify if single or multiple trial
+    should be run.
+    """
+
+    myDlg3 = gui.Dlg(title=expName)
+    myDlg3.addText('\n   Run stimuli in all orders of frequency presentation and volume progression?:')
+    myDlg3.addField('', choices=['yes', 'no'])
+
+
+    myDlg3.show()
+
+    if myDlg3.OK == False:
+        analyse_ansl.main_func(_thisDir, expInfo)
+        core.quit()  # user pressed cancel
+
+    #  get info if single or multiple trial should be run
+    myDlg3 = myDlg3.data
+    return myDlg3
+
+def gui_func4():
     """Define layout and create gui to specify specific conditions if
     presenting a single trial was specified in previous gui
     """
     list_volume = ['increasing', 'decreasing']
     list_order = ['ascending', 'descending']
 
-    myDlg3 = gui.Dlg(title=expName)
-    myDlg3.addText(u'\n   Choose volume order:')
-    myDlg3.addField(u'', choices=list_volume)
-    myDlg3.addText(u'\n   Choose presentation order:')
-    myDlg3.addField(u'', choices=list_order)
+    myDlg4 = gui.Dlg(title=expName)
+    myDlg4.addText('\n   Choose volume order:')
+    myDlg4.addField('', choices=list_volume)
+    myDlg4.addText('\n   Choose presentation order:')
+    myDlg4.addField('', choices=list_order)
 
-    myDlg3.show()
-    if myDlg3.OK == False:
+    myDlg4.show()
+    if myDlg4.OK == False:
         analyse_ansl.main_func(_thisDir, expInfo)
         core.quit()  # user pressed cancel
 
     #  get info on combination of conditions
-    myDlg3 = myDlg3.data
-    return myDlg3
+    myDlg4 = myDlg4.data
+    return myDlg4
 
 def ansl_main_func(subject):
     """Define starting values of each string.
@@ -784,31 +799,31 @@ def ansl_main_func(subject):
     field1 = 'o'
     field2 = 'o'
     field3 = 'o'
-    field4 = 'o'
 
 
     # call gui function one afther another
-    myDlg = gui_func1(field1, field2, field3, field4)  # first gui
+    myDlg = gui_func1(field1, field2, field3)  # first gui
     myDlg2 = gui_func2()  # second gui
 
     # if single run was selected call third gui
-    if myDlg2[0] == 'no':
+    if myDlg2[0] == 'classic audiometry':
+        print("not implemented yet, sorry.")
+    else:
         myDlg3 = gui_func3()
 
 
     # while loop: enables updating of gui
     while (not field1 == 'x'
            or not field2 == 'x'
-           or not field3 == 'x'
-           or not field4 == 'x'):
+           or not field3 == 'x'):
 
         for i in myDlg:
-            #  if mprage acq-schme was selected
-            if 'mprage(T1w)' in myDlg:
-                acquisition_scheme = 'mprage(T1w)'
+            #  if baseline was selected
+            if 'baseline' in myDlg:
+                acquisition_scheme = 'basline'
 
                 #  if multiple trial presentation was selected
-                if myDlg2[0] == 'yes':
+                if myDlg3[0] == 'yes':
                     single_run = False
                     order_volume = None
                     order_presentation = None
@@ -817,30 +832,33 @@ def ansl_main_func(subject):
                                          single_run)
 
                 #  if single trial presentation was selected
-                if myDlg2[0] == 'no':
+                if myDlg3[0] == 'no':
+                    
+                    myDlg4 = gui_func4()
+
                     # specified order of volume_progression
-                    order_volume = myDlg3[0]
+                    order_volume = myDlg4[0]
 
                     # specified order of frequency_progression
-                    order_presentation = myDlg3[1]
+                    order_presentation = myDlg4[1]
                     single_run = True
                     stimuli_presentation(subject, hz_list, acquisition_scheme,
                                          order_volume, order_presentation,
                                          single_run)
                 # call gui function one afther another
-                myDlg = gui_func1(field1, field2, field3, field4)
-                myDlg2 = gui_func2()
+                myDlg = gui_func1(field1, field2, field3)
+                myDlg3 = gui_func3()
 
                 # if single run was selected call third gui
-                if myDlg2[0] == 'no':
-                    myDlg3 = gui_func3()
+                # if myDlg3[0] == 'no':
+                #     myDlg4 = gui_func4()
 
             #  if epi_standard acq-schme was selected
-            elif 'epi_standard(TR2s)' in myDlg:
-                acquisition_scheme = 'epi_standard(TR2s)'
+            elif 'functional' in myDlg:
+                acquisition_scheme = 'functional'
 
                 #  if multiple trial presentation was selected
-                if myDlg2[0] == 'yes':
+                if myDlg3[0] == 'yes':
                     single_run = False
                     order_volume = None
                     order_presentation = None
@@ -849,30 +867,33 @@ def ansl_main_func(subject):
                                          single_run)
 
                 #  if single trial presentation was selected
-                if myDlg2[0] == 'no':
+                if myDlg3[0] == 'no':
+
+                    myDlg4 = gui_func4()
+
                     # specified order of volume_progression
-                    order_volume = myDlg3[0]
+                    order_volume = myDlg4[0]
 
                     # specified order of frequency_progression
-                    order_presentation = myDlg3[1]
+                    order_presentation = myDlg4[1]
                     single_run = True
                     stimuli_presentation(subject, hz_list, acquisition_scheme,
                                          order_volume, order_presentation,
                                          single_run)
                 # call gui function one afther another
-                myDlg = gui_func1(field1, field2, field3, field4)
-                myDlg2 = gui_func2()
+                myDlg = gui_func1(field1, field2, field3)
+                myDlg3 = gui_func3()
 
                 # if single run was selected call third gui
-                if myDlg2[0] == 'no':
-                    myDlg3 = gui_func3()
+                if myDlg3[0] == 'no':
+                    myDlg4 = gui_func4()
 
             #  if epi_fast acq-schme was selected
-            elif 'epi_fast(TR1s)' in myDlg:
-                acquisition_scheme = 'epi_fast(TR1s)'
+            elif 'structural' in myDlg:
+                acquisition_scheme = 'structural'
 
                 #  if multiple trial presentation was selected
-                if myDlg2[0] == 'yes':
+                if myDlg3[0] == 'yes':
                     single_run = False
                     order_volume = None
                     order_presentation = None
@@ -881,55 +902,26 @@ def ansl_main_func(subject):
                                          single_run)
 
                 #  if single trial presentation was selected
-                if myDlg2[0] == 'no':
+                if myDlg3[0] == 'no':
+
+                    myDlg4 = gui_func4()
+
                     # specified order of volume_progression
-                    order_volume = myDlg3[0]
+                    order_volume = myDlg4[0]
 
                     # specified order of frequency_progression
-                    order_presentation = myDlg3[1]
+                    order_presentation = myDlg4[1]
                     single_run = True
                     stimuli_presentation(subject, hz_list, acquisition_scheme,
                                          order_volume, order_presentation,
                                          single_run)
                 # call gui function one afther another
-                myDlg = gui_func1(field1, field2, field3, field4)
-                myDlg2 = gui_func2()
+                myDlg = gui_func1(field1, field2, field3)
+                myDlg3 = gui_func3()
 
                 # if single run was selected call third gui
-                if myDlg2[0] == 'no':
-                    myDlg3 = gui_func3()
-
-            #  if baseline condition was selected
-            elif 'baseline' in myDlg:
-                acquisition_scheme = 'baseline'
-
-                #  if multiple trial presentation was selected
-                if myDlg2[0] == 'yes':
-                    single_run = False
-                    order_volume = None
-                    order_presentation = None
-                    stimuli_presentation(subject, hz_list, acquisition_scheme,
-                                         order_volume, order_presentation,
-                                         single_run)
-
-                #  if single trial presentation was selected
-                if myDlg2[0] == 'no':
-                    # specified order of volume_progression
-                    order_volume = myDlg3[0]
-
-                    # specified order of frequency_progression
-                    order_presentation = myDlg3[1]
-                    single_run = True
-                    stimuli_presentation(subject, hz_list, acquisition_scheme,
-                                         order_volume, order_presentation,
-                                         single_run)
-                # call gui function one afther another
-                myDlg = gui_func1(field1, field2, field3, field4)
-                myDlg2 = gui_func2()
-
-                # if single run was selected call third gui
-                if myDlg2[0] == 'no':
-                    myDlg3 = gui_func3()
+                if myDlg4[0] == 'no':
+                    myDlg4 = gui_func4()
 
 
 ###############################################################################
@@ -940,14 +932,13 @@ def ansl_main_func(subject):
 absolute_clock = time.time()
 
 # Ensure that relative paths start from the same directory as this script
-_thisDir = os.path.dirname(os.path.abspath(__file__)).decode(
-            sys.getfilesystemencoding())
+_thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 print(_thisDir)
 
 # Store info about the experiment session
 expName = 'aint_no_sound_loud_enough'
-expInfo = {u'participant': ''}
+expInfo = {'participant': '', 'session': ''}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 
 if dlg.OK is False:
@@ -958,7 +949,7 @@ expInfo['expName'] = expName
 
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log
-filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'],
+filename = _thisDir + os.sep + 'data/%s_%s_%s' % (expInfo['participant'],
                                                     expName,
                                                     expInfo['date'])
 
@@ -980,7 +971,7 @@ file_id = expName + '_' + expInfo['participant']
 
 
 # get dataframe containing paths to stimuli
-hz_list = pd.read_csv('/home/michael/atom/stimuli.csv')
+hz_list = pd.read_csv(path_ansl + '/stimuli.csv')
 
 
 #  call function

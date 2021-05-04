@@ -24,7 +24,7 @@ def plot_mri_settings_scatter(df, path, subject):
             df_base = pd.DataFrame(group)
 
             plt.figure()
-            print(0)
+            print((0))
 
             g = sns.FacetGrid(df_base,hue='order_volume', height=6, aspect=6,palette='BuGn')
             g.map(sns.lineplot, "Frequency (Hz)", "Level (dBFS)", alpha=1, linewidth=1)
@@ -38,7 +38,7 @@ def plot_mri_settings_scatter(df, path, subject):
             df_tr1 = pd.DataFrame(group)
 
             plt.figure()
-            print(1)
+            print((1))
             g = sns.FacetGrid(df_tr1,hue='order_volume', height=6, aspect=6,palette='Blues_d')
             g.map(sns.lineplot, "Frequency (Hz)", "Level (dBFS)", alpha=1, linewidth=1)
             g.map(plt.scatter, "Frequency (Hz)", "Level (dBFS)", s=50, alpha=1, linewidth=1)
@@ -51,7 +51,7 @@ def plot_mri_settings_scatter(df, path, subject):
             df_tr2 = pd.DataFrame(group)
 
             plt.figure()
-            print(2)
+            print((2))
 
             g = sns.FacetGrid(df_tr2,hue='order_volume', height=6, aspect=6,palette=("ch:2.5,-.2,dark=.3"))
             g.map(sns.lineplot, "Frequency (Hz)", "Level (dBFS)", alpha=1, linewidth=1)
@@ -66,7 +66,7 @@ def plot_mri_settings_scatter(df, path, subject):
             df_t1w = pd.DataFrame(group)
 
             plt.figure()
-            print(3)
+            print((3))
 
             g = sns.FacetGrid(df_t1w,hue='order_volume', height=6, aspect=6,palette='RdGy')
             g.map(sns.lineplot, "Frequency (Hz)", "Level (dBFS)", alpha=1, linewidth=1)

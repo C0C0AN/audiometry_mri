@@ -1,7 +1,3 @@
-# import necessary dependencies
-# %matplotlib inline
-from __future__ import division #so 1/2 = 0.5, not 1/2=0
-
 import numpy as np
 import matplotlib as mlp
 import matplotlib.pyplot as plt
